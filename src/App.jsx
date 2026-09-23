@@ -1,5 +1,6 @@
-import { useState } from "react";
+import {useEffect, useState } from "react";
 import "./App.css";
+import logo from "./assets/logo-symbol.png";
 
 const services = [
   {
@@ -37,6 +38,28 @@ const services = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    const elements = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="site">
       <div className="bg-grid"></div>
@@ -44,10 +67,9 @@ function App() {
       <div className="bg-glow glow-two"></div>
 
       <nav className="navbar">
-        <a href="#home" className="logo">
-          <span className="logo-box">R</span>
-          <span>Rushi<span>Web</span></span>
-        </a>
+       <a href="#home" className="logo">
+  <img src={logo} alt="Rushi Web Studio" className="logo-image" />
+</a>
 <button
   className="menu-button"
   onClick={() => setMenuOpen(!menuOpen)}
@@ -70,7 +92,7 @@ function App() {
       </nav>
 
       <main>
-        <section id="home" className="hero">
+        <section id="home" className="hero reveal visible">
           <div className="hero-content">
             <div className="badge">
               <span></span>
@@ -152,7 +174,7 @@ function App() {
           </div>
         </section>
 
-        <section id="services" className="section">
+        <section id="services" className="section reveal">
           <div className="section-heading">
             <span className="label">WHAT WE DO</span>
             <h2>
@@ -178,7 +200,7 @@ function App() {
           </div>
         </section>
 
-        <section id="work" className="feature-section section">
+        <section id="work" className="feature-section section reveal">
           <div className="feature-card">
             <div className="feature-content">
               <span className="label">WHY RUSHI WEB STUDIO</span>
@@ -218,9 +240,7 @@ function App() {
             </div>
           </div>
         </section>
-
-        <section id="about" className="section about">
-          <section id="portfolio" className="section portfolio">
+<section id="portfolio" className="section portfolio reveal">
   <div className="section-heading">
     <span className="label">SELECTED WORK</span>
 
@@ -324,6 +344,7 @@ function App() {
     </article>
   </div>
 </section>
+        <section id="about" className="section about reveal">
           <span className="label">ABOUT US</span>
 
           <h2>
@@ -338,7 +359,7 @@ function App() {
           </p>
         </section>
 
-        <section id="contact" className="section contact">
+        <section id="contact" className="section contact reveal">
           <div className="contact-card">
             <div>
               <span className="label">START A PROJECT</span>
