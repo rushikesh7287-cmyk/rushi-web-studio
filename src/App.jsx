@@ -78,12 +78,12 @@ function App() {
   ☰
 </button>
         <div className={`nav-links ${menuOpen ? "open" : ""}`}>
-  <a href="#home">Home</a>
-  <a href="#services">Services</a>
-  <a href="#portfolio">Portfolio</a>
-  <a href="#work">Why Us</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
+  <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
+<a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+<a href="#portfolio" onClick={() => setMenuOpen(false)}>Portfolio</a>
+<a href="#work" onClick={() => setMenuOpen(false)}>Why Us</a>
+<a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+<a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
 </div>
 
         <a href="#contact" className="nav-button">
