@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 
 const services = [
@@ -34,6 +35,8 @@ const services = [
 ];
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <div className="site">
       <div className="bg-grid"></div>
@@ -45,14 +48,21 @@ function App() {
           <span className="logo-box">R</span>
           <span>Rushi<span>Web</span></span>
         </a>
-
-        <div className="nav-links">
-          <a href="#home">Home</a>
-          <a href="#services">Services</a>
-          <a href="#work">Why Us</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-        </div>
+<button
+  className="menu-button"
+  onClick={() => setMenuOpen(!menuOpen)}
+  aria-label="Toggle menu"
+>
+  ☰
+</button>
+        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+  <a href="#home">Home</a>
+  <a href="#services">Services</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#work">Why Us</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</div>
 
         <a href="#contact" className="nav-button">
           Let's Talk ↗
@@ -210,6 +220,110 @@ function App() {
         </section>
 
         <section id="about" className="section about">
+          <section id="portfolio" className="section portfolio">
+  <div className="section-heading">
+    <span className="label">SELECTED WORK</span>
+
+    <h2>
+      Websites built to
+      <em>make an impact.</em>
+    </h2>
+
+    <p>
+      A few examples of the digital experiences we can create for
+      businesses, creators and growing brands.
+    </p>
+  </div>
+
+  <div className="portfolio-grid">
+    <article className="project-card project-large">
+      <div className="project-preview business-preview">
+        <div className="preview-top">
+          <span>R</span>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+
+        <div className="preview-content">
+          <small>BUSINESS WEBSITE</small>
+          <h3>Build your<br />brand online.</h3>
+          <span className="preview-button"></span>
+        </div>
+      </div>
+
+      <div className="project-info">
+        <div>
+          <h3>Business Website</h3>
+          <p>Professional website for a modern business.</p>
+        </div>
+
+        <span className="project-arrow">↗</span>
+      </div>
+
+      <div className="project-tags">
+        <span>React</span>
+        <span>Responsive</span>
+        <span>Modern UI</span>
+      </div>
+    </article>
+
+    <article className="project-card">
+      <div className="project-preview creator-preview">
+        <div className="creator-circle">C</div>
+        <small>CREATOR</small>
+        <h3>Your story.<br />Your audience.</h3>
+      </div>
+
+      <div className="project-info">
+        <div>
+          <h3>Creator Landing Page</h3>
+          <p>Focused landing page for a personal brand.</p>
+        </div>
+
+        <span className="project-arrow">↗</span>
+      </div>
+
+      <div className="project-tags">
+        <span>Landing Page</span>
+        <span>UI Design</span>
+      </div>
+    </article>
+
+    <article className="project-card">
+      <div className="project-preview store-preview">
+        <div className="store-header">
+          <b>STORE</b>
+          <span>⌕</span>
+          <span>🛒</span>
+        </div>
+
+        <div className="product-row">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+
+        <small>ONLINE STORE</small>
+        <h3>Simple shopping<br />experience.</h3>
+      </div>
+
+      <div className="project-info">
+        <div>
+          <h3>Online Store</h3>
+          <p>Clean and responsive e-commerce concept.</p>
+        </div>
+
+        <span className="project-arrow">↗</span>
+      </div>
+
+      <div className="project-tags">
+        <span>React</span>
+        <span>Web Design</span>
+      </div>
+    </article>
+  </div>
+</section>
           <span className="label">ABOUT US</span>
 
           <h2>
